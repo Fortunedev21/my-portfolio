@@ -12,6 +12,13 @@ const Footer = () => {
     { label: 'Contact', href: '/contact' }
   ];
 
+  const moreLinks = [
+    { label: 'Témoignages', href: '/testimonials' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Ressources', href: '/resources' },
+    { label: 'Mon parcours', href: '/timeline' }
+  ];
+
   const externalLinks = [
     { label: 'GitHub', href: '#', icon: Github },
     { label: 'LinkedIn', href: '#', icon: Linkedin },
@@ -28,7 +35,7 @@ const Footer = () => {
   return (
     <footer className="bg-blue-dark py-12">
       <div className="container-main">
-        <div className="grid md:grid-cols-4 gap-8 mb-10">
+        <div className="grid md:grid-cols-5 gap-8 mb-10">
           {/* Identité */}
           <div className="md:col-span-1">
             <h3 className="font-poppins font-bold text-lg text-white-soft mb-3">Fortuné Aïounou</h3>
@@ -40,9 +47,21 @@ const Footer = () => {
 
           {/* Liens rapides */}
           <div>
-            <h4 className="font-poppins font-semibold text-white-soft text-sm mb-3">Liens rapides</h4>
+            <h4 className="font-poppins font-semibold text-white-soft text-sm mb-3">Navigation</h4>
             <div className="space-y-1.5">
               {quickLinks.map((link) => (
+                <Link key={link.label} to={link.href} className="block font-inter text-green-light/80 hover:text-orange-light transition-colors duration-300 text-sm">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Plus de liens */}
+          <div>
+            <h4 className="font-poppins font-semibold text-white-soft text-sm mb-3">Plus</h4>
+            <div className="space-y-1.5">
+              {moreLinks.map((link) => (
                 <Link key={link.label} to={link.href} className="block font-inter text-green-light/80 hover:text-orange-light transition-colors duration-300 text-sm">
                   {link.label}
                 </Link>
@@ -126,8 +145,8 @@ const Footer = () => {
             <span className="inline-flex items-center gap-1"><Code className="text-blue-intense" size={14} /> React + TypeScript + TailwindCSS</span>
           </p>
           <div className="mt-3 flex justify-center gap-4 text-xs">
-            <Link to="#" className="font-inter text-green-light/60 hover:text-orange-light transition-colors duration-300">Mentions légales</Link>
-            <Link to="#" className="font-inter text-green-light/60 hover:text-orange-light transition-colors duration-300">Politique de confidentialité</Link>
+            <Link to="/legal" className="font-inter text-green-light/60 hover:text-orange-light transition-colors duration-300">Mentions légales</Link>
+            <Link to="/legal" className="font-inter text-green-light/60 hover:text-orange-light transition-colors duration-300">Politique de confidentialité</Link>
           </div>
         </div>
       </div>
