@@ -1,0 +1,363 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, Clock, ArrowRight, Tag, User, Search } from 'lucide-react';
+
+const Blog = () => {
+  const [selectedCategory, setSelectedCategory] = useState('Tous');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const categories = ['Tous', 'Développement Web', 'Mobile', 'IA & ML', 'Design', 'Business'];
+
+  const blogPosts = [
+    {
+      slug: 'comment-choisir-technologie-web-2025',
+      title: 'Comment choisir la bonne technologie web en 2025 ?',
+      excerpt: 'Guide complet pour choisir entre React, Vue, Angular et les autres frameworks selon vos besoins business.',
+      content: 'Le choix d\'une technologie web est crucial pour le succès de votre projet...',
+      category: 'Développement Web',
+      author: 'Fortuné Aïounou',
+      publishedAt: '2025-01-15',
+      readTime: '8 min',
+      image: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tags: ['React', 'Vue.js', 'Angular', 'Technologie'],
+      featured: true
+    },
+    {
+      slug: 'ia-pme-guide-pratique',
+      title: 'IA pour les PME : Guide pratique pour commencer',
+      excerpt: 'Comment intégrer l\'intelligence artificielle dans votre PME sans se ruiner ? Exemples concrets et ROI.',
+      content: 'L\'intelligence artificielle n\'est plus réservée aux grandes entreprises...',
+      category: 'IA & ML',
+      author: 'Fortuné Aïounou',
+      publishedAt: '2025-01-12',
+      readTime: '12 min',
+      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tags: ['IA', 'PME', 'Automatisation', 'ROI'],
+      featured: true
+    },
+    {
+      slug: 'design-ui-ux-erreurs-eviter',
+      title: '10 erreurs UI/UX qui tuent vos conversions',
+      excerpt: 'Les erreurs de design les plus courantes qui font fuir vos clients et comment les corriger.',
+      content: 'Un mauvais design peut coûter cher à votre business...',
+      category: 'Design',
+      author: 'Fortuné Aïounou',
+      publishedAt: '2025-01-10',
+      readTime: '6 min',
+      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tags: ['UI/UX', 'Conversion', 'Design', 'Erreurs'],
+      featured: false
+    },
+    {
+      slug: 'flutter-vs-react-native-2025',
+      title: 'Flutter vs React Native : Le match 2025',
+      excerpt: 'Comparaison détaillée des deux frameworks mobiles les plus populaires avec exemples de projets.',
+      content: 'Le développement mobile cross-platform a révolutionné...',
+      category: 'Mobile',
+      author: 'Fortuné Aïounou',
+      publishedAt: '2025-01-08',
+      readTime: '10 min',
+      image: 'https://images.pexels.com/photos/4050302/pexels-photo-4050302.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tags: ['Flutter', 'React Native', 'Mobile', 'Comparaison'],
+      featured: false
+    },
+    {
+      slug: 'seo-site-web-2025-guide',
+      title: 'SEO en 2025 : Ce qui marche vraiment',
+      excerpt: 'Les nouvelles règles du référencement Google et comment optimiser votre site pour être visible.',
+      content: 'Le SEO évolue constamment et 2025 apporte son lot de nouveautés...',
+      category: 'Développement Web',
+      author: 'Fortuné Aïounou',
+      publishedAt: '2025-01-05',
+      readTime: '15 min',
+      image: 'https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tags: ['SEO', 'Google', 'Référencement', 'Visibilité'],
+      featured: false
+    },
+    {
+      slug: 'startup-mvp-erreurs-eviter',
+      title: 'Startup : 5 erreurs fatales dans votre MVP',
+      excerpt: 'Les pièges les plus courants lors du développement d\'un MVP et comment les éviter pour réussir.',
+      content: 'Créer un MVP réussi est un art délicat...',
+      category: 'Business',
+      author: 'Fortuné Aïounou',
+      publishedAt: '2025-01-03',
+      readTime: '9 min',
+      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tags: ['Startup', 'MVP', 'Erreurs', 'Business'],
+      featured: false
+    }
+  ];
+
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesCategory = selectedCategory === 'Tous' || post.category === selectedCategory;
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
+
+  const featuredPosts = blogPosts.filter(post => post.featured);
+  const regularPosts = filteredPosts.filter(post => !post.featured);
+
+  const getCategoryColor = (category: string) => {
+    const colors: { [key: string]: string } = {
+      'Développement Web': 'bg-orange-deep/10 text-orange-deep',
+      'Mobile': 'bg-blue-intense/10 text-blue-intense',
+      'IA & ML': 'bg-orange-light/10 text-orange-light',
+      'Design': 'bg-blue-gray/10 text-blue-gray',
+      'Business': 'bg-green-500/10 text-green-600'
+    };
+    return colors[category] || 'bg-gray-100 text-gray-600';
+  };
+
+  return (
+    <div className="min-h-screen bg-white-soft pt-20">
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-green-light via-white-soft to-green-light">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-poppins font-bold text-4xl md:text-5xl text-gray-anthracite mb-6 animate-fade-in-up">
+            Mon <span className="text-orange-deep">Blog</span>
+          </h1>
+          <p className="font-inter text-xl text-blue-gray max-w-3xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            Conseils, tutoriels et retours d'expérience sur le développement web, mobile, l'IA et le design
+          </p>
+          
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-gray" size={20} />
+              <input
+                type="text"
+                placeholder="Rechercher un article..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors duration-200 font-inter"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Filter */}
+      <section className="py-8 bg-white-soft">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-full font-inter font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-orange-deep text-white-soft shadow-lg'
+                    : 'bg-white text-blue-gray border border-green-light hover:border-orange-deep/30 hover:bg-orange-deep/5'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Posts */}
+      {featuredPosts.length > 0 && selectedCategory === 'Tous' && !searchTerm && (
+        <section className="py-12 bg-white-soft">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-poppins font-bold text-2xl text-gray-anthracite mb-8 flex items-center gap-2">
+              <Tag className="text-orange-deep" size={24} />
+              Articles à la une
+            </h2>
+            
+            <div className="grid lg:grid-cols-2 gap-8">
+              {featuredPosts.map((post, index) => (
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-slide-up"
+                  style={{ animationDelay: `${index * 200}ms` }}
+                >
+                  <div className="relative overflow-hidden h-64">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-anthracite/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(post.category)}`}>
+                      {post.category}
+                    </div>
+                    <div className="absolute top-4 right-4 bg-orange-deep text-white-soft px-3 py-1 rounded-full text-sm font-medium">
+                      À la une
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="font-poppins font-bold text-xl text-gray-anthracite mb-3 group-hover:text-orange-deep transition-colors duration-300 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    
+                    <p className="font-inter text-blue-gray mb-4 leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between text-sm text-blue-gray mb-4">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1">
+                          <User size={14} />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar size={14} />
+                          <span>{new Date(post.publishedAt).toLocaleDateString('fr-FR')}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock size={14} />
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-green-light text-blue-gray px-2 py-1 rounded-full text-xs font-inter"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center text-orange-deep group-hover:text-orange-light transition-colors duration-300">
+                      <span className="font-inter font-medium">Lire l'article</span>
+                      <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Regular Posts */}
+      <section className="py-12 bg-white-soft">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {featuredPosts.length > 0 && selectedCategory === 'Tous' && !searchTerm && (
+            <h2 className="font-poppins font-bold text-2xl text-gray-anthracite mb-8">
+              Tous les articles
+            </h2>
+          )}
+          
+          {regularPosts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {regularPosts.map((post, index) => (
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-slide-up"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className="relative overflow-hidden h-48">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-anthracite/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(post.category)}`}>
+                      {post.category}
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="font-poppins font-bold text-lg text-gray-anthracite mb-3 group-hover:text-orange-deep transition-colors duration-300 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    
+                    <p className="font-inter text-blue-gray mb-4 leading-relaxed text-sm line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between text-xs text-blue-gray mb-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar size={12} />
+                        <span>{new Date(post.publishedAt).toLocaleDateString('fr-FR')}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock size={12} />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {post.tags.slice(0, 2).map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-green-light text-blue-gray px-2 py-1 rounded-full text-xs font-inter"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center text-orange-deep group-hover:text-orange-light transition-colors duration-300">
+                      <span className="font-inter font-medium text-sm">Lire l'article</span>
+                      <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-orange-deep/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="text-orange-deep" size={32} />
+              </div>
+              <h3 className="font-poppins font-bold text-xl text-gray-anthracite mb-4">
+                Aucun article trouvé
+              </h3>
+              <p className="font-inter text-blue-gray mb-6">
+                Essayez de modifier vos critères de recherche ou explorez d'autres catégories.
+              </p>
+              <button
+                onClick={() => {
+                  setSelectedCategory('Tous');
+                  setSearchTerm('');
+                }}
+                className="bg-orange-deep hover:bg-orange-light text-white-soft px-6 py-3 rounded-lg font-inter font-semibold transition-all duration-300"
+              >
+                Voir tous les articles
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="py-16 bg-gradient-to-r from-orange-deep to-orange-light">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-poppins font-bold text-3xl text-white-soft mb-6">
+            📧 Restez informé
+          </h2>
+          <p className="font-inter text-lg text-white-soft/90 mb-8">
+            Recevez mes derniers articles et conseils tech directement dans votre boîte mail
+          </p>
+          <div className="flex max-w-md mx-auto gap-3">
+            <input
+              type="email"
+              placeholder="votre@email.com"
+              className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white/20 font-inter"
+            />
+            <button className="bg-white-soft hover:bg-white text-orange-deep px-6 py-3 rounded-lg font-inter font-semibold transition-all duration-300">
+              S'abonner
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Blog;
