@@ -25,11 +25,11 @@ const Header = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <div className="fixed top-8 left-48 right-48 z-[100]">
+    <div className="fixed top-4 left-4 right-4 md:top-8 md:left-48 md:right-48 z-[100]">
       <header className={`bg-white/50 backdrop-blur-md rounded-3xl shadow-lg transition-all duration-300 ${isScrolled ? 'shadow-xl' : ''}`}>
-        <div className="px-6">
+        <div className="px-4 md:px-6">
           <div className="flex items-center justify-between py-3">
-            <Link to="/" className="text-lg font-bold transition-colors duration-300 text-gray-anthracite font-poppins hover:text-orange-deep">
+            <Link to="/" className="text-base md:text-lg font-bold transition-colors duration-300 text-gray-anthracite font-poppins hover:text-orange-deep">
               Fortuné Aïounou
             </Link>
 
@@ -47,20 +47,20 @@ const Header = () => {
             </nav>
 
             {/* Mobile Menu Button */}
-            <button className="p-2 md:hidden text-gray-anthracite" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <button className="p-2 md:hidden text-gray-anthracite hover:text-orange-deep transition-colors" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
-            <nav className="py-3 border-t md:hidden border-green-light">
+            <nav className="py-3 border-t md:hidden border-gray-200">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block py-2 font-inter text-sm transition-colors duration-200 ${isActive(item.href) ? 'text-orange-deep' : 'text-blue-gray hover:text-orange-deep'}`}
+                  className={`block py-3 px-2 font-inter text-sm font-medium transition-colors duration-200 rounded-lg ${isActive(item.href) ? 'text-orange-deep bg-orange-50' : 'text-gray-anthracite hover:text-orange-deep hover:bg-gray-50'}`}
                 >
                   {item.label}
                 </Link>

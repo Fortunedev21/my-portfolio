@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
@@ -13,9 +13,6 @@ import ServiceDetail from './pages/ServiceDetail';
 import Footer from './components/Footer';
 
 function App() {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
   return (
     <div className="min-h-screen">
       <Header />
@@ -32,7 +29,7 @@ function App() {
           <Route path="/service/:id" element={<ServiceDetail />} />
         </Routes>
       </main>
-      {!isHomePage && <Footer />}
+      <Footer />
     </div>
   );
 }
