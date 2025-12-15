@@ -1,74 +1,52 @@
 import React from 'react';
-import { AlertTriangle, Clock, DollarSign, Frown, TrendingDown, X } from 'lucide-react';
+import { AlertTriangle, X } from 'lucide-react';
 
 const PainSection = () => {
-  const painPoints = [
-    { icon: Clock, title: 'Des outils compliqués', description: 'Une technique qui fait perdre du temps au lieu de simplifier votre quotidien.', color: 'text-red-500' },
-    { icon: TrendingDown, title: 'Un site qui n\'attire pas', description: 'Une application ou un site web qui n\'attire ni ne convertit vos visiteurs.', color: 'text-orange-500' },
-    { icon: DollarSign, title: 'Une communication floue', description: 'Une communication qui ne reflète pas votre vraie valeur.', color: 'text-red-600' }
-  ];
-
-  const commonProblems = [
-    'Une identité visuelle qui ne marque pas les esprits',
-    'Un site ou une application qui n\'attire ni ne convertit',
-    'Des outils compliqués et une technique qui fait perdre du temps',
-    'Une communication floue qui ne reflète pas leur vraie valeur',
-    'L\'envie d\'utiliser l\'IA, mais sans savoir par où commencer',
-    'Des processus manuels qui vous font perdre un temps précieux'
+  const problems = [
+    { title: 'Votre site est invisible sur Google', description: 'Vos concurrents captent vos clients potentiels pendant que vous restez introuvable.' },
+    { title: 'Votre site fait fuir les visiteurs', description: 'Un design daté ou un site lent = 53% des visiteurs qui partent en moins de 3 secondes.' },
+    { title: 'Vous perdez des heures sur des tâches répétitives', description: 'Sans automatisation, vous gaspillez un temps précieux qui pourrait servir à développer votre business.' },
+    { title: 'Votre image ne reflète pas votre valeur', description: 'Une identité visuelle amateur vous fait perdre en crédibilité face à vos prospects.' },
+    { title: 'Vous n\'avez pas d\'application mobile', description: 'Vos clients veulent vous trouver sur leur smartphone, mais vous n\'y êtes pas.' },
+    { title: 'Vous ne savez pas par où commencer avec l\'IA', description: 'L\'intelligence artificielle pourrait transformer votre business, mais vous ne savez pas comment.' }
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-br from-red-50 to-orange-50">
+    <section className="section-padding bg-white-soft">
       <div className="container-main">
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-5">
-            <AlertTriangle className="text-red-500 animate-bounce" size={40} />
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img src="https://images.pexels.com/photos/3760790/pexels-photo-3760790.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Entrepreneur frustré par son site web" className="w-full h-96 object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-500/30 to-transparent"></div>
+            </div>
+            <div className="absolute -bottom-6 -right-6 bg-red-500 text-white-soft rounded-2xl p-6 shadow-xl">
+              <AlertTriangle size={32} className="mb-2" />
+              <p className="font-poppins font-bold text-lg">Ça vous parle ?</p>
+            </div>
           </div>
-          <h2 className="section-title mb-4 animate-fade-in-up">
-            Vous reconnaissez-vous dans ces <span className="text-red-500">situations</span> ?
-          </h2>
-          <p className="section-subtitle animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Trop d'entrepreneurs et de dirigeants subissent ces problèmes au quotidien...
-          </p>
-        </div>
 
-        {/* Main Pain Points */}
-        <div className="grid lg:grid-cols-3 gap-6 mb-12">
-          {painPoints.map((pain, index) => {
-            const Icon = pain.icon;
-            return (
-              <div key={pain.title} className="text-center p-6 card-base border-l-4 border-red-500 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mx-auto mb-5">
-                  <Icon className={pain.color} size={28} />
-                </div>
-                <h3 className="font-poppins font-bold text-lg text-gray-anthracite mb-3">{pain.title}</h3>
-                <p className="font-inter text-blue-gray leading-relaxed text-sm">{pain.description}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Common Problems List */}
-        <div className="card-base p-6 border border-red-100 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <h3 className="font-poppins font-bold text-xl text-gray-anthracite mb-6 text-center">Ces problèmes vous parlent ?</h3>
-          <div className="grid md:grid-cols-2 gap-3">
-            {commonProblems.map((problem, index) => (
-              <div key={index} className="flex items-start gap-2 p-3 bg-red-50 rounded-lg" style={{ animationDelay: `${index * 80}ms` }}>
-                <X className="text-red-500 flex-shrink-0 mt-0.5" size={16} />
-                <p className="font-inter text-blue-gray text-sm leading-relaxed">{problem}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Emotional Hook */}
-        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-          <div className="bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-xl p-6 border border-red-200">
-            <Frown className="text-red-500 mx-auto mb-3" size={40} />
-            <h3 className="font-poppins font-bold text-xl text-gray-anthracite mb-3">Le résultat ? Frustration et perte d'opportunités</h3>
-            <p className="font-inter text-blue-gray max-w-2xl mx-auto leading-relaxed">
-              Pendant que vous vous débattez avec ces problèmes, vos concurrents avancent. <strong>Il est temps de changer ça.</strong>
+          <div>
+            <p className="text-red-500 font-inter font-semibold mb-4">LE CONSTAT</p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-gray-anthracite mb-6">
+              Ces problèmes freinent la croissance de votre <span className="text-red-500">entreprise</span>
+            </h2>
+            <p className="font-inter text-lg text-blue-gray mb-8">
+              Chaque jour sans solution digitale efficace, c'est de l'argent et des opportunités qui vous échappent. 
+              <strong className="text-gray-anthracite"> Vos concurrents, eux, n'attendent pas.</strong>
             </p>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {problems.map((problem) => (
+                <div key={problem.title} className="flex items-start gap-3 bg-red-50 rounded-xl p-4 border border-red-100">
+                  <X className="text-red-500 flex-shrink-0 mt-0.5" size={18} />
+                  <div>
+                    <p className="font-poppins font-semibold text-gray-anthracite text-sm mb-1">{problem.title}</p>
+                    <p className="font-inter text-blue-gray text-xs">{problem.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

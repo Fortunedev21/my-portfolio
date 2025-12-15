@@ -1,47 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 
 const FinalCTA = () => {
   return (
-    <section className="section-padding bg-gradient-to-r from-orange-deep via-orange-light to-blue-intense relative overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-16 -right-16 w-32 h-32 bg-white/10 rounded-full animate-float"></div>
-        <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-white/5 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+    <section className="relative py-24 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+          alt="CTA" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-deep/95 via-orange-deep/90 to-orange-light/85"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="animate-fade-in-up">
-          <div className="flex justify-center mb-5">
-            <Sparkles className="text-white-soft animate-spin-slow" size={40} />
-          </div>
-          
-          <h2 className="font-poppins font-bold text-2xl md:text-3xl text-white-soft mb-4">
-            🚀 Démarrons ensemble
-          </h2>
-          
-          <p className="font-inter text-lg text-white-soft/90 mb-6 max-w-2xl mx-auto leading-relaxed">
-            Vous avez une idée ? Un projet ? Un défi technique ? 
-            Transformons votre vision en solution digitale qui marche vraiment.
-          </p>
+      <div className="container-main relative z-10 text-center">
+        <h2 className="font-poppins font-bold text-3xl md:text-4xl lg:text-5xl text-white-soft mb-6">
+          Prêt à transformer votre idée en réalité ?
+        </h2>
+        
+        <p className="font-inter text-xl text-white-soft/90 mb-10 max-w-2xl mx-auto">
+          Discutons de votre projet et créons ensemble une solution digitale qui fait vraiment la différence.
+        </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-6">
-            <Link to="/contact" className="group bg-white-soft hover:bg-white text-orange-deep px-6 py-3 rounded-lg font-inter font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1">
-              <MessageCircle size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-              Discutons de votre projet
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-            
-            <Link to="/services" className="group bg-transparent hover:bg-white/20 text-white-soft border-2 border-white-soft px-6 py-3 rounded-lg font-inter font-semibold transition-all duration-300 flex items-center gap-2 hover:-translate-y-1">
-              Voir mes services
-            </Link>
-          </div>
-
-          <p className="font-inter text-white-soft/80 text-sm">
-            Réponse garantie sous 24h • Devis gratuit • Premier échange offert
-          </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Link to="/contact" className="group bg-white-soft hover:bg-white text-orange-deep px-8 py-4 rounded-lg font-inter font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1">
+            <MessageCircle size={20} /> Discutons de votre projet
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <Link to="/services" className="bg-transparent hover:bg-white/20 text-white-soft border-2 border-white-soft px-8 py-4 rounded-lg font-inter font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2">
+            Voir mes services
+          </Link>
         </div>
+
+        <p className="font-inter text-white-soft/80 text-sm">
+          Réponse garantie sous 24h • Devis gratuit • Premier échange offert
+        </p>
       </div>
     </section>
   );

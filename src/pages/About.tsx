@@ -1,101 +1,108 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Target, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const About = () => {
   const values = [
-    { icon: Code, title: 'Simplicité', description: 'Des solutions élégantes qui résolvent des problèmes complexes de manière simple et intuitive.' },
-    { icon: Target, title: 'Impact', description: 'Chaque projet doit apporter une valeur concrète et mesurable à votre business.' },
-    { icon: Zap, title: 'Innovation', description: 'J\'utilise les dernières technologies pour créer des solutions modernes et performantes.' }
+    { title: 'Résultats avant tout', description: 'Chaque ligne de code doit servir votre business. Pas de fioritures, que du concret.', image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400' },
+    { title: 'Transparence totale', description: 'Vous savez exactement où en est votre projet, à chaque étape. Zéro surprise.', image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400' },
+    { title: 'Innovation pragmatique', description: 'Les dernières technologies, oui. Mais seulement si elles apportent une vraie valeur.', image: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=400' }
   ];
 
   const journey = [
-    { year: '2019', title: 'Formation en Systèmes Informatiques', description: 'Diplôme en développement et administration systèmes' },
-    { year: '2020', title: 'Premiers projets freelance', description: 'Développement de sites web et identités visuelles' },
-    { year: '2022', title: 'Spécialisation Mobile & IA', description: 'Formation avancée en Flutter, Kotlin et Machine Learning' },
-    { year: '2025', title: 'Expert Full-Stack & IA', description: 'Plus de 50 projets réalisés, expertise reconnue' }
+    { year: '2019', title: 'Les fondations', description: 'Diplôme en systèmes informatiques. Premiers sites web pour des PME locales.' },
+    { year: '2020', title: 'L\'accélération', description: 'Lancement en freelance. 15 projets livrés la première année.' },
+    { year: '2022', title: 'La spécialisation', description: 'Formation avancée en Flutter, Kotlin et Machine Learning. Cap sur le mobile et l\'IA.' },
+    { year: '2025', title: 'L\'expertise', description: '+50 projets, des clients au Bénin et à l\'international. Une méthode qui a fait ses preuves.' }
   ];
 
   const technologies = [
-    { name: 'React', logo: '⚛️' }, { name: 'Symfony', logo: '🎵' }, { name: 'Flutter', logo: '💙' }, { name: 'Python', logo: '🐍' },
-    { name: 'TensorFlow', logo: '🧠' }, { name: 'PostgreSQL', logo: '🐘' }, { name: 'Figma', logo: '🎨' }, { name: 'Docker', logo: '🐳' }
+    { name: 'React & Next.js', image: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=200' },
+    { name: 'Flutter & Kotlin', image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=200' },
+    { name: 'Python & TensorFlow', image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=200' },
+    { name: 'Figma & Design', image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=200' }
   ];
 
-  const workingMethod = [
-    { step: '1', title: 'Écoute & Analyse', description: 'Je prends le temps de comprendre vos besoins et objectifs.' },
-    { step: '2', title: 'Stratégie & Conception', description: 'Définition de la solution optimale avec architecture et design.' },
-    { step: '3', title: 'Développement Agile', description: 'Développement itératif avec points réguliers.' },
-    { step: '4', title: 'Tests & Optimisation', description: 'Tests rigoureux et optimisation des performances.' },
-    { step: '5', title: 'Livraison & Support', description: 'Mise en production et accompagnement post-lancement.' }
+  const process = [
+    { step: '01', title: 'Écoute', description: 'Je comprends votre business, vos objectifs, vos contraintes.' },
+    { step: '02', title: 'Stratégie', description: 'On définit ensemble la solution optimale pour votre budget.' },
+    { step: '03', title: 'Création', description: 'Développement agile avec des points réguliers. Vous voyez l\'avancement.' },
+    { step: '04', title: 'Livraison', description: 'Mise en ligne, formation et support. Vous êtes autonome.' }
   ];
 
   return (
     <div className="min-h-screen bg-white-soft">
-      {/* Hero Section avec image */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      {/* Hero */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920" 
-            alt="À propos" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-anthracite/90 via-gray-anthracite/80 to-gray-anthracite/70"></div>
+          <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Fortuné Aïounou - Développeur web freelance Bénin" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-anthracite/95 via-gray-anthracite/85 to-gray-anthracite/70"></div>
         </div>
         
         <div className="container-main relative z-10 py-32">
-          <div className="max-w-3xl">
-            <p className="text-orange-deep font-inter font-semibold mb-4 animate-fade-in-up">À PROPOS</p>
-            <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-white-soft mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              Qui suis-<span className="text-orange-deep">je</span> ?
-            </h1>
-            <p className="font-inter text-xl text-white-soft/90 leading-relaxed mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              Développeur full-stack, designer UI/UX et ingénieur IA basé au Bénin. 
-              Je crée des solutions digitales qui transforment les idées en succès concrets.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <Link to="/contact" className="btn-primary">Travaillons ensemble</Link>
-              <Link to="/projects" className="bg-white/10 hover:bg-white/20 text-white-soft border border-white/30 px-6 py-3 rounded-lg font-inter font-semibold transition-all duration-300">
-                Voir mes projets
-              </Link>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-orange-deep font-inter font-semibold mb-4">À PROPOS</p>
+              <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-white-soft mb-6">
+                Le développeur qui comprend votre <span className="text-orange-deep">business</span>
+              </h1>
+              <p className="font-inter text-xl text-white-soft/90 leading-relaxed mb-8">
+                Je ne suis pas juste un technicien qui code. Je suis un partenaire qui comprend vos enjeux business 
+                et crée des solutions digitales qui génèrent des résultats concrets.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
+                  Discutons de votre projet <ArrowRight size={18} />
+                </Link>
+                <Link to="/projects" className="bg-white/10 hover:bg-white/20 text-white-soft border border-white/30 px-6 py-3 rounded-lg font-inter font-semibold transition-all duration-300">
+                  Voir mes réalisations
+                </Link>
+              </div>
+            </div>
+            
+            <div className="hidden lg:block">
+              <div className="relative">
+                <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fortuné Aïounou - Expert développement web Cotonou" className="w-80 h-96 object-cover rounded-2xl shadow-2xl mx-auto" />
+                <div className="absolute -bottom-6 -left-6 bg-orange-deep text-white-soft rounded-xl p-6 shadow-xl">
+                  <div className="text-3xl font-bold">5+</div>
+                  <div className="text-sm">Années d'expertise</div>
+                </div>
+                <div className="absolute -top-6 -right-6 bg-white rounded-xl p-6 shadow-xl">
+                  <div className="text-3xl font-bold text-orange-deep">50+</div>
+                  <div className="text-sm text-blue-gray">Projets livrés</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Présentation personnelle */}
+      {/* Story */}
       <section className="section-padding bg-white-soft">
         <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
-              <div className="relative group">
-                <div className="absolute -inset-3 bg-gradient-to-r from-orange-deep/20 to-blue-intense/20 rounded-2xl blur-lg"></div>
-                <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
-                  <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fortuné Aïounou" className="w-full h-96 object-cover rounded-xl" />
-                  <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                    <p className="font-poppins font-semibold text-gray-anthracite">Fortuné Aïounou</p>
-                    <p className="font-inter text-blue-gray text-sm">Full-Stack Developer & AI Engineer</p>
-                  </div>
-                </div>
-              </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Développeur web au travail" className="w-full h-96 object-cover rounded-2xl shadow-xl" />
             </div>
-
-            <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <h2 className="section-title mb-6">Mon <span className="text-orange-deep">histoire</span></h2>
-              <div className="space-y-4 font-inter text-blue-gray leading-relaxed">
-                <p>
-                  <strong className="text-orange-deep">Pourquoi je fais ça ?</strong> Parce que j'ai vu trop d'entreprises 
-                  perdre du temps et de l'argent avec des solutions digitales qui ne fonctionnent pas.
+            
+            <div>
+              <p className="text-orange-deep font-inter font-semibold mb-4">MON HISTOIRE</p>
+              <h2 className="font-poppins font-bold text-3xl md:text-4xl text-gray-anthracite mb-6">
+                Pourquoi j'ai choisi ce <span className="text-orange-deep">métier</span>
+              </h2>
+              <p className="font-inter text-lg text-blue-gray leading-relaxed mb-6">
+                J'ai vu trop d'entrepreneurs investir dans des sites web qui ne leur rapportent rien. 
+                Des applications qui ne sont jamais utilisées. Des designs qui ne convertissent pas.
+              </p>
+              <p className="font-inter text-lg text-blue-gray leading-relaxed mb-6">
+                <strong className="text-gray-anthracite">Ma mission ?</strong> Créer des solutions digitales qui génèrent un vrai retour sur investissement. 
+                Pas des projets techniques pour faire joli, mais des outils qui font croître votre business.
+              </p>
+              <div className="bg-green-light rounded-xl p-6 border-l-4 border-orange-deep">
+                <p className="font-inter text-gray-anthracite">
+                  <strong>Ma promesse :</strong> Chaque euro investi dans votre projet digital doit vous en rapporter plusieurs. 
+                  Sinon, je n'ai pas fait mon travail.
                 </p>
-                <p>
-                  Ma mission est de créer des outils qui <em>marchent vraiment</em> et qui apportent 
-                  une valeur concrète à votre business.
-                </p>
-                <div className="bg-green-light p-5 rounded-xl border-l-4 border-orange-deep">
-                  <p className="flex items-start gap-3">
-                    <Target className="text-orange-deep mt-1 flex-shrink-0" size={20} />
-                    <span><strong className="text-gray-anthracite">Ma philosophie :</strong> Chaque ligne de code doit servir un objectif business clair.</span>
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -105,42 +112,53 @@ const About = () => {
       {/* Values */}
       <section className="section-padding bg-green-light">
         <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Mes <span className="text-orange-deep">Valeurs</span></h2>
+          <div className="text-center mb-16">
+            <p className="text-orange-deep font-inter font-semibold mb-4">MES VALEURS</p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-gray-anthracite">
+              Ce qui guide chacun de mes <span className="text-orange-deep">projets</span>
+            </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <div key={value.title} className="card-base card-hover text-center p-8 animate-bounce-in" style={{ animationDelay: `${index * 150}ms` }}>
-                  <div className="w-14 h-14 bg-orange-deep/10 rounded-xl flex items-center justify-center mx-auto mb-5">
-                    <Icon className="text-orange-deep" size={28} />
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {values.map((value) => (
+              <div key={value.title} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="relative h-48 overflow-hidden">
+                  <img src={value.image} alt={value.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-anthracite/70 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4">
+                    <h3 className="font-poppins font-bold text-xl text-white-soft">{value.title}</h3>
                   </div>
-                  <h3 className="font-poppins font-bold text-xl text-gray-anthracite mb-3">{value.title}</h3>
+                </div>
+                <div className="p-6">
                   <p className="font-inter text-blue-gray leading-relaxed">{value.description}</p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Journey */}
-      <section className="section-padding bg-white-soft">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Mon <span className="text-blue-intense">Parcours</span></h2>
+      <section className="section-padding bg-gray-anthracite">
+        <div className="container-main">
+          <div className="text-center mb-16">
+            <p className="text-orange-deep font-inter font-semibold mb-4">MON PARCOURS</p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white-soft">
+              5 ans d'évolution <span className="text-orange-deep">constante</span>
+            </h2>
           </div>
-          <div className="space-y-6">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {journey.map((step, index) => (
-              <div key={step.year} className="flex items-start gap-5 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="w-16 h-16 bg-blue-intense/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="font-poppins font-bold text-blue-intense text-sm">{step.year}</span>
+              <div key={step.year} className="relative">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 h-full">
+                  <div className="text-4xl font-bold text-orange-deep mb-4">{step.year}</div>
+                  <h3 className="font-poppins font-bold text-lg text-white-soft mb-2">{step.title}</h3>
+                  <p className="font-inter text-white-soft/70 text-sm">{step.description}</p>
                 </div>
-                <div className="card-base p-5 flex-1">
-                  <h3 className="font-poppins font-bold text-lg text-gray-anthracite mb-1">{step.title}</h3>
-                  <p className="font-inter text-blue-gray">{step.description}</p>
-                </div>
+                {index < journey.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-orange-deep"></div>
+                )}
               </div>
             ))}
           </div>
@@ -148,52 +166,91 @@ const About = () => {
       </section>
 
       {/* Technologies */}
-      <section className="section-padding bg-green-light">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Technologies <span className="text-orange-deep">Maîtrisées</span></h2>
-          </div>
-          <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
-            {technologies.map((tech, index) => (
-              <div key={tech.name} className="card-base card-hover text-center p-4 animate-bounce-in" style={{ animationDelay: `${index * 80}ms` }}>
-                <div className="text-2xl mb-1">{tech.logo}</div>
-                <p className="font-inter text-xs text-blue-gray font-medium">{tech.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Working Method */}
       <section className="section-padding bg-white-soft">
         <div className="container-main">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Comment je <span className="text-blue-intense">travaille</span></h2>
-            <p className="section-subtitle">Une méthode éprouvée pour garantir le succès de votre projet</p>
+          <div className="text-center mb-16">
+            <p className="text-orange-deep font-inter font-semibold mb-4">MES OUTILS</p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-gray-anthracite">
+              Les technologies que je <span className="text-orange-deep">maîtrise</span>
+            </h2>
+            <p className="font-inter text-lg text-blue-gray mt-4 max-w-2xl mx-auto">
+              Je choisis toujours la technologie la plus adaptée à votre projet, pas celle qui est à la mode.
+            </p>
           </div>
-          <div className="grid md:grid-cols-5 gap-4">
-            {workingMethod.map((method, index) => (
-              <div key={method.step} className="text-center animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="w-12 h-12 bg-orange-deep text-white-soft rounded-full flex items-center justify-center mx-auto mb-3 font-poppins font-bold">
-                  {method.step}
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            {technologies.map((tech) => (
+              <div key={tech.name} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="relative h-40">
+                  <img src={tech.image} alt={tech.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-anthracite/80 to-gray-anthracite/20"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="font-poppins font-bold text-lg text-white-soft text-center px-2">{tech.name}</span>
+                  </div>
                 </div>
-                <h3 className="font-poppins font-semibold text-base text-gray-anthracite mb-2">{method.title}</h3>
-                <p className="font-inter text-blue-gray text-sm leading-relaxed">{method.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Symfony', 'Laravel', 'PostgreSQL', 'Docker', 'AWS', 'Firebase', 'Node.js'].map((tech) => (
+              <span key={tech} className="bg-green-light text-blue-gray px-4 py-2 rounded-full font-inter text-sm border border-orange-deep/10">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="section-padding bg-green-light">
+        <div className="container-main">
+          <div className="text-center mb-16">
+            <p className="text-orange-deep font-inter font-semibold mb-4">MA MÉTHODE</p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-gray-anthracite">
+              Un processus simple et <span className="text-orange-deep">efficace</span>
+            </h2>
+            <p className="font-inter text-lg text-blue-gray mt-4 max-w-2xl mx-auto">
+              Pas de jargon technique, pas de surprises. Vous savez exactement ce qui se passe à chaque étape.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {process.map((item, index) => (
+              <div key={item.step} className="relative">
+                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center h-full">
+                  <div className="text-5xl font-bold text-orange-deep/20 mb-4">{item.step}</div>
+                  <h3 className="font-poppins font-bold text-xl text-gray-anthracite mb-3">{item.title}</h3>
+                  <p className="font-inter text-blue-gray">{item.description}</p>
+                </div>
+                {index < process.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                    <ArrowRight className="text-orange-deep" size={24} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="cta-section">
-        <div className="container-main text-center">
-          <h2 className="font-poppins font-bold text-3xl text-white-soft mb-4">Travaillons ensemble</h2>
-          <p className="font-inter text-lg text-white-soft/90 mb-6 max-w-xl mx-auto">
-            Vous avez un projet en tête ? Discutons-en et créons quelque chose d'exceptionnel
+      {/* CTA */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Collaboration projet digital" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-deep/95 via-orange-deep/90 to-orange-light/85"></div>
+        </div>
+
+        <div className="container-main relative z-10 text-center">
+          <h2 className="font-poppins font-bold text-3xl md:text-4xl text-white-soft mb-6">
+            Prêt à donner vie à votre projet ?
+          </h2>
+          <p className="font-inter text-xl text-white-soft/90 mb-8 max-w-2xl mx-auto">
+            Premier échange gratuit et sans engagement. On discute de votre projet, je vous donne mon avis honnête 
+            et on voit si on peut travailler ensemble.
           </p>
-          <Link to="/contact" className="bg-white-soft hover:bg-white text-orange-deep px-8 py-4 rounded-lg font-inter font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-block">
-            📩 Travaillons ensemble
+          <Link to="/contact" className="bg-white-soft hover:bg-white text-orange-deep px-8 py-4 rounded-lg font-inter font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center gap-2">
+            Réserver un appel gratuit <ArrowRight size={20} />
           </Link>
         </div>
       </section>

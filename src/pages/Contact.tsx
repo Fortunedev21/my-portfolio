@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle, Calendar, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle, Calendar, Clock, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -15,56 +15,48 @@ const Contact = () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
     setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
-    alert('Message envoyé avec succès ! Je vous recontacterai dans les 24h.');
+    alert('Message envoyé ! Je vous réponds dans les 24h.');
   };
 
   const contactInfo = [
-    { icon: Phone, label: 'Téléphone', value: '+229 XX XX XX XX', href: 'tel:+229XXXXXXXX', description: 'Appelez-moi directement' },
-    { icon: Mail, label: 'Email', value: 'fortune.dev@example.com', href: 'mailto:fortune.dev@example.com', description: 'Réponse sous 24h' },
-    { icon: MessageCircle, label: 'WhatsApp', value: 'Chat direct', href: 'https://wa.me/229XXXXXXXX', description: 'Réponse immédiate' },
-    { icon: MapPin, label: 'Localisation', value: 'Cotonou, Bénin', href: '#', description: 'Disponible en présentiel' }
+    { icon: Phone, label: 'Téléphone', value: '+229 XX XX XX XX', href: 'tel:+229XXXXXXXX', description: 'Du lundi au samedi, 9h-18h' },
+    { icon: Mail, label: 'Email', value: 'fortune.dev@example.com', href: 'mailto:fortune.dev@example.com', description: 'Réponse garantie sous 24h' },
+    { icon: MessageCircle, label: 'WhatsApp', value: 'Chat direct', href: 'https://wa.me/229XXXXXXXX', description: 'Pour les urgences' },
+    { icon: MapPin, label: 'Localisation', value: 'Cotonou, Bénin', href: '#', description: 'Disponible en visio partout' }
   ];
 
-  const socialLinks = [
-    { icon: Linkedin, label: 'LinkedIn', href: '#', color: 'hover:text-blue-intense' },
-    { icon: Github, label: 'GitHub', href: '#', color: 'hover:text-gray-anthracite' },
-    { icon: MessageCircle, label: 'WhatsApp', href: '#', color: 'hover:text-orange-light' }
+  const benefits = [
+    'Réponse garantie sous 24h',
+    'Premier échange gratuit',
+    'Devis détaillé sans engagement',
+    'Conseils personnalisés'
   ];
 
   return (
     <div className="min-h-screen bg-white-soft">
-      {/* Hero Section avec image */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+      {/* Hero */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920" 
-            alt="Contact" 
-            className="w-full h-full object-cover"
-          />
+          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Contact développeur web Bénin" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-anthracite/90 via-gray-anthracite/85 to-gray-anthracite/75"></div>
         </div>
         
         <div className="container-main relative z-10 py-32 text-center">
-          <p className="text-orange-deep font-inter font-semibold mb-4 animate-fade-in-up">CONTACT</p>
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-white-soft mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            Restons en <span className="text-orange-deep">contact</span>
+          <p className="text-orange-deep font-inter font-semibold mb-4">CONTACT</p>
+          <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-white-soft mb-6">
+            Parlons de votre <span className="text-orange-deep">projet</span>
           </h1>
-          <p className="font-inter text-xl text-white-soft/90 leading-relaxed max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Vous avez un projet ? Une idée ? Je suis toujours partant pour discuter d'un nouveau défi.
+          <p className="font-inter text-xl text-white-soft/90 leading-relaxed max-w-2xl mx-auto mb-8">
+            Une idée ? Un projet ? Un défi technique ? Je suis là pour vous aider à transformer votre vision en réalité digitale.
           </p>
           
-          {/* Quick Stats */}
-          <div className="flex justify-center gap-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <div className="text-center">
-              <Clock className="text-orange-deep mx-auto mb-2" size={24} />
-              <p className="font-inter text-sm text-white-soft/80">Réponse sous</p>
-              <p className="font-poppins font-bold text-white-soft">24 heures</p>
-            </div>
-            <div className="text-center">
-              <Calendar className="text-orange-deep mx-auto mb-2" size={24} />
-              <p className="font-inter text-sm text-white-soft/80">Disponibilité</p>
-              <p className="font-poppins font-bold text-white-soft">7j/7</p>
-            </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {benefits.map((benefit) => (
+              <div key={benefit} className="flex items-center gap-2 text-white-soft/80">
+                <CheckCircle size={16} className="text-orange-deep" />
+                <span className="font-inter text-sm">{benefit}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -72,38 +64,40 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="section-padding bg-white-soft">
         <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <div className="space-y-6 animate-slide-up">
-              <div>
-                <h2 className="font-poppins font-bold text-2xl text-gray-anthracite mb-6">Contactons-nous</h2>
-                <div className="space-y-4">
-                  {contactInfo.map((info) => {
-                    const Icon = info.icon;
-                    return (
-                      <a key={info.label} href={info.href} className="group flex items-center gap-4 p-5 card-base border border-green-light hover:border-orange-deep/30">
-                        <div className="w-12 h-12 bg-orange-deep/10 rounded-xl flex items-center justify-center group-hover:bg-orange-deep/20 transition-colors duration-300">
-                          <Icon className="text-orange-deep" size={22} />
-                        </div>
-                        <div>
-                          <p className="font-poppins font-semibold text-gray-anthracite group-hover:text-orange-deep transition-colors duration-300 text-sm">{info.label}</p>
-                          <p className="font-inter text-blue-gray text-sm">{info.value}</p>
-                          <p className="font-inter text-xs text-blue-gray/70">{info.description}</p>
-                        </div>
-                      </a>
-                    );
-                  })}
-                </div>
+            <div>
+              <h2 className="font-poppins font-bold text-2xl text-gray-anthracite mb-2">Discutons de votre projet</h2>
+              <p className="font-inter text-blue-gray mb-8">
+                Choisissez le canal qui vous convient. Je réponds personnellement à chaque message.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                {contactInfo.map((info) => {
+                  const Icon = info.icon;
+                  return (
+                    <a key={info.label} href={info.href} className="group flex items-center gap-4 p-5 bg-white rounded-xl shadow-md border border-green-light hover:border-orange-deep/30 hover:shadow-lg transition-all duration-300">
+                      <div className="w-12 h-12 bg-orange-deep/10 rounded-xl flex items-center justify-center group-hover:bg-orange-deep group-hover:scale-110 transition-all duration-300">
+                        <Icon className="text-orange-deep group-hover:text-white-soft transition-colors" size={22} />
+                      </div>
+                      <div>
+                        <p className="font-poppins font-semibold text-gray-anthracite group-hover:text-orange-deep transition-colors">{info.label}</p>
+                        <p className="font-inter text-blue-gray text-sm">{info.value}</p>
+                        <p className="font-inter text-blue-gray/60 text-xs">{info.description}</p>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
 
-              {/* Social Links */}
-              <div>
-                <h3 className="font-poppins font-semibold text-base text-gray-anthracite mb-4">Retrouvez-moi aussi sur</h3>
+              {/* Social */}
+              <div className="mb-8">
+                <p className="font-poppins font-semibold text-gray-anthracite mb-4">Retrouvez-moi aussi sur</p>
                 <div className="flex gap-3">
-                  {socialLinks.map((social) => {
+                  {[{ icon: Linkedin, label: 'LinkedIn' }, { icon: Github, label: 'GitHub' }, { icon: MessageCircle, label: 'WhatsApp' }].map((social) => {
                     const Icon = social.icon;
                     return (
-                      <a key={social.label} href={social.href} className={`w-12 h-12 card-base flex items-center justify-center text-blue-gray ${social.color} transition-all duration-300 hover:-translate-y-1 border border-green-light`} aria-label={social.label}>
+                      <a key={social.label} href="#" className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-gray hover:text-orange-deep hover:shadow-lg transition-all duration-300 border border-green-light" aria-label={social.label}>
                         <Icon size={22} />
                       </a>
                     );
@@ -111,63 +105,75 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* CTA Secondary */}
-              <div className="bg-gradient-to-br from-orange-deep/5 to-blue-intense/5 rounded-xl p-5 border border-orange-deep/10">
-                <h3 className="font-poppins font-semibold text-base text-gray-anthracite mb-2">Préférez un appel ?</h3>
-                <p className="font-inter text-blue-gray text-sm mb-3">Réservez un créneau de 30 minutes pour discuter de votre projet</p>
+              {/* Call CTA */}
+              <div className="bg-gradient-to-br from-orange-deep/10 to-blue-intense/10 rounded-xl p-6 border border-orange-deep/20">
+                <h3 className="font-poppins font-semibold text-lg text-gray-anthracite mb-2">Préférez un appel ?</h3>
+                <p className="font-inter text-blue-gray text-sm mb-4">
+                  Réservez un créneau de 30 minutes. On discute de votre projet, je vous donne mon avis et on voit si on peut travailler ensemble.
+                </p>
                 <button className="btn-primary flex items-center gap-2 text-sm">
-                  <Calendar size={16} /> Réserver un appel
+                  <Calendar size={16} /> Réserver un appel gratuit
                 </button>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="card-base p-7 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <h2 className="font-poppins font-bold text-2xl text-gray-anthracite mb-5">Envoyez-moi un message</h2>
+            {/* Form */}
+            <div className="bg-white rounded-2xl p-8 shadow-xl">
+              <h2 className="font-poppins font-bold text-2xl text-gray-anthracite mb-2">Envoyez-moi un message</h2>
+              <p className="font-inter text-blue-gray mb-6">
+                Décrivez votre projet en quelques lignes. Plus vous êtes précis, plus ma réponse sera pertinente.
+              </p>
               
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block font-inter text-sm font-medium text-blue-gray mb-1.5">Nom complet *</label>
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-2.5 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors duration-200 font-inter text-sm" placeholder="Votre nom" />
+                    <label htmlFor="name" className="block font-inter text-sm font-medium text-gray-anthracite mb-1.5">Votre nom *</label>
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors font-inter" placeholder="Jean Dupont" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block font-inter text-sm font-medium text-blue-gray mb-1.5">Email *</label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-2.5 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors duration-200 font-inter text-sm" placeholder="votre@email.com" />
+                    <label htmlFor="email" className="block font-inter text-sm font-medium text-gray-anthracite mb-1.5">Votre email *</label>
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors font-inter" placeholder="jean@entreprise.com" />
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="subject" className="block font-inter text-sm font-medium text-blue-gray mb-1.5">Sujet *</label>
-                  <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-2.5 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors duration-200 font-inter text-sm" placeholder="L'objet de votre message" />
+                  <label htmlFor="subject" className="block font-inter text-sm font-medium text-gray-anthracite mb-1.5">Sujet *</label>
+                  <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors font-inter" placeholder="Ex: Création d'un site e-commerce" />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block font-inter text-sm font-medium text-blue-gray mb-1.5">Message *</label>
-                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-2.5 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors duration-200 font-inter text-sm resize-none" placeholder="Décrivez votre projet ou votre besoin..." />
+                  <label htmlFor="message" className="block font-inter text-sm font-medium text-gray-anthracite mb-1.5">Votre message *</label>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 border border-green-light rounded-lg focus:ring-2 focus:ring-orange-deep/20 focus:border-orange-deep transition-colors font-inter resize-none" placeholder="Décrivez votre projet : objectifs, budget approximatif, délais souhaités..." />
                 </div>
                 
-                <button type="submit" disabled={isSubmitting} className="group w-full btn-primary flex items-center justify-center gap-2 py-3.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button type="submit" disabled={isSubmitting} className="group w-full btn-primary flex items-center justify-center gap-2 py-4 disabled:opacity-50">
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-white-soft border-t-transparent rounded-full animate-spin" />
                   ) : (
-                    <><Send size={18} /> Envoyer le message</>
+                    <><Send size={18} /> Envoyer mon message</>
                   )}
                 </button>
+                
+                <p className="font-inter text-blue-gray/60 text-xs text-center">
+                  En soumettant ce formulaire, vous acceptez d'être recontacté par email ou téléphone.
+                </p>
               </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="h-64 bg-green-light relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="text-orange-deep mx-auto mb-2" size={32} />
-            <p className="font-poppins font-semibold text-gray-anthracite">Cotonou, Bénin</p>
-            <p className="font-inter text-blue-gray text-sm">Disponible pour des projets locaux et internationaux</p>
+      {/* Map/Location */}
+      <section className="py-16 bg-green-light">
+        <div className="container-main text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <MapPin className="text-orange-deep" size={28} />
+            <h3 className="font-poppins font-bold text-xl text-gray-anthracite">Basé à Cotonou, disponible partout</h3>
           </div>
+          <p className="font-inter text-blue-gray max-w-xl mx-auto">
+            Je travaille avec des clients au Bénin, en Afrique de l'Ouest et en Europe. 
+            Visioconférence, email, WhatsApp : on trouve toujours un moyen de collaborer efficacement.
+          </p>
         </div>
       </section>
     </div>

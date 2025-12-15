@@ -1,50 +1,38 @@
 import React from 'react';
-import { Award, Users, Zap, CheckCircle } from 'lucide-react';
 
 const WhyChooseMe = () => {
   const reasons = [
-    { icon: Award, title: 'Expérience Prouvée', description: '+5 ans d\'expérience, +50 projets réalisés avec succès pour des PME et startups.', stats: '50+ projets' },
-    { icon: Users, title: 'Polyvalence Unique', description: 'La rare combinaison développement full-stack + design UI/UX + ingénierie IA.', stats: '4 expertises' },
-    { icon: Zap, title: 'Impact Mesurable', description: 'Mes solutions génèrent des résultats concrets : +25% de ventes, 95% satisfaction.', stats: '100% ROI positif' }
+    { value: '50+', label: 'Projets réalisés', description: 'Des solutions livrées avec succès pour des PME et startups.', image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { value: '4', label: 'Expertises combinées', description: 'Web, Mobile, Design et IA réunis en un seul interlocuteur.', image: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { value: '100%', label: 'Satisfaction client', description: 'Des résultats concrets et mesurables pour chaque projet.', image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600' }
   ];
 
   return (
     <section className="section-padding bg-white-soft">
       <div className="container-main">
-        <div className="text-center mb-12">
-          <h2 className="section-title mb-4 animate-fade-in-up">
-            Pourquoi me <span className="text-orange-deep">choisir</span> ?
+        <div className="text-center mb-16">
+          <p className="text-orange-deep font-inter font-semibold mb-4">POURQUOI MOI</p>
+          <h2 className="font-poppins font-bold text-3xl md:text-4xl text-gray-anthracite mb-6">
+            Ce qui fait la <span className="text-orange-deep">différence</span>
           </h2>
-          <p className="section-subtitle animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            3 raisons qui font la différence pour votre projet
-          </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => {
-            const Icon = reason.icon;
-            return (
-              <div key={reason.title} className="group text-center p-6 card-base card-hover border border-green-light hover:border-orange-deep/30 animate-bounce-in" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="relative mb-5">
-                  <div className="w-16 h-16 bg-orange-deep/10 rounded-xl flex items-center justify-center mx-auto group-hover:bg-orange-deep/20 transition-colors duration-300">
-                    <Icon className="text-orange-deep group-hover:scale-110 transition-transform duration-300" size={32} />
-                  </div>
-                  <div className="absolute -top-2 -right-2 bg-blue-intense text-white-soft rounded-full px-2.5 py-0.5 text-xs font-inter font-semibold">
-                    {reason.stats}
-                  </div>
-                </div>
-                
-                <h3 className="font-poppins font-bold text-lg text-gray-anthracite mb-3 group-hover:text-orange-deep transition-colors duration-300">
-                  {reason.title}
-                </h3>
-                <p className="font-inter text-blue-gray leading-relaxed text-sm">{reason.description}</p>
-
-                <div className="mt-5 flex justify-center">
-                  <CheckCircle className="text-orange-deep group-hover:scale-110 transition-transform duration-300" size={22} />
+        <div className="grid lg:grid-cols-3 gap-8">
+          {reasons.map((reason) => (
+            <div key={reason.label} className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-48 overflow-hidden">
+                <img src={reason.image} alt={reason.label} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-anthracite/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <div className="text-4xl font-bold text-orange-deep">{reason.value}</div>
+                  <div className="font-poppins font-semibold text-white-soft">{reason.label}</div>
                 </div>
               </div>
-            );
-          })}
+              <div className="p-6">
+                <p className="font-inter text-blue-gray leading-relaxed">{reason.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
