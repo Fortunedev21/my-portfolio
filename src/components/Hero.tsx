@@ -53,28 +53,20 @@ const Hero = () => {
             </div>
           </div>
 
-          <h1 className="font-poppins font-bold text-4xl md:text-6xl lg:text-7xl text-gray-anthracite mb-8 leading-tight">
-            <span className="inline-block animate-fade-in-up">Développeur web & mobile,</span>{' '}
+          <h1 className="font-poppins font-bold text-4xl md:text-6xl lg:text-7xl text-gray-anthracite mb-4 leading-tight">
+            <span className="inline-block animate-fade-in-up">Fortune</span>{' '}
             <span className="text-orange-deep inline-block animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              designer UI/UX
-            </span>{' '}
-            <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              et ingénieur IA
-            </span>{' '}
-            <span className="text-blue-intense inline-block animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
-              au service de vos projets.
+              AÏOUNOU
             </span>
           </h1>
           
-          <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '1s' }}>
+          <p className="font-inter text-xl md:text-2xl text-blue-intense font-semibold mb-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            Développeur Full-Stack & Designer UI/UX
+          </p>
+          
+          <div className="animate-fade-in-up" style={{ animationDelay: '1s' }}>
             <p className="font-inter text-lg md:text-xl text-blue-gray mb-8 max-w-3xl mx-auto leading-relaxed">
-              <span className="font-semibold text-gray-anthracite">Arrêtez de perdre du temps avec des outils qui ne marchent pas.</span>
-            </p>
-            
-            <p className="font-inter text-lg md:text-xl text-blue-gray mb-8 max-w-3xl mx-auto leading-relaxed">
-              Je crée des sites web, applications et solutions intelligentes qui fonctionnent vraiment : 
-              <span className="text-orange-deep font-semibold"> simples, beaux, rapides, visibles sur Google</span> et 
-              conçus pour vous faire <span className="text-blue-intense font-semibold">gagner du temps et des clients.</span>
+              J'accompagne les porteurs de projets à <span className="font-semibold text-gray-anthracite">passer de l'idée au produit qui génère des revenus</span> grâce à des solutions web, mobile et IA pensées pour vos utilisateurs — <span className="text-orange-deep font-semibold">sans prise de tête, sans mauvaises surprises.</span>
             </p>
           </div>
 
